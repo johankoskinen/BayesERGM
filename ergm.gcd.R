@@ -5,7 +5,7 @@ ergm.gcd <- function(formula,ergm.est,nsim=NULL,burnin=NULL,thinning =NULL,retur
 	observedNetwork <-  ergm.getnetwork(formula)
 	therearemissing <- any(get.edge.attribute(observedNetwork,'na'))
 	notergmobject <- class(ergm.est)!='ergm'
-	if ( c('m.prior') %in% names(ergm.est) )
+	if ( class(ergm.est) == "bergm")
 	{
 		notergmobject <- FALSE
 		isbergm <- TRUE
@@ -36,7 +36,7 @@ ergm.gcd <- function(formula,ergm.est,nsim=NULL,burnin=NULL,thinning =NULL,retur
 		}
 ergm.est$covar <- cov(Theta)
 		ergm.est$coef <- colMeans(Theta)
-		names(ergm.est$coef) <- est$specs
+		names(ergm.est$coef) <- ergm.est$specs
 		
 	}
 	if(therearemissing | notergmobject){
