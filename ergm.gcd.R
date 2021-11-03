@@ -321,7 +321,7 @@ convergence.test <- function(formula,ergm.est,multiplication.factor=30,nsim=NULL
  }
  
   
-con.stats <- cbind(ergm.est$coef ,sqrt(diag(est$covar)),t.stat,SACF)
+con.stats <- cbind(ergm.est$coef ,sqrt(diag(ergm.est$covar)),t.stat,SACF)
 colnames(con.stats) <- c('coef','se','convergence t','SACF')
 
 con.stats
